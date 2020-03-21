@@ -11,7 +11,6 @@ spring:
     username: root
     password: root
 
-
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.atguigu.springcloud.entites  # 所有Entity别名类下的包
@@ -25,3 +24,6 @@ eureka:
     service-url:
       # 单机版 defaultZone:  http://localhost:7001/eureka
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/ #集群版
+  instance:
+    instance-id: payment8002
+    prefer-ip-address: true # 显示主机地址

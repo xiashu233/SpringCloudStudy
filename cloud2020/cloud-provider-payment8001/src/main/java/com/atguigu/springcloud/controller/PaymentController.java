@@ -5,9 +5,14 @@ import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
@@ -18,6 +23,9 @@ public class PaymentController {
 
     @Value("${server.port}")
     private String serverPort;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     @PostMapping(value = "/payment/insert")
     @ResponseBody
@@ -38,6 +46,22 @@ public class PaymentController {
             return new CommonResult(200,"查询数据库成功,ServerPort:" + serverPort,payment);
         }
         return new CommonResult(444,"查询数据库失败,ServerPort:" + serverPort);
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/payment/discovery")
+    public Object discovery(){
+        // 获得所有的微服务名称
+        List<String> services = discoveryClient.getServices();
+        Map<String,Object> infos = new HashMap<>();
+        infos.put("Service",services);
+
+        for (String service : services) {
+            List<ServiceInstance> instances = discoveryClient.getInstances(service);
+            infos.put(service,instances);
+        }
+
+        return infos;
     }
 
 
