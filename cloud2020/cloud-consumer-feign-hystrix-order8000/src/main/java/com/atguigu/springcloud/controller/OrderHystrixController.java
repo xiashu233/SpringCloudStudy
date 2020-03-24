@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@DefaultProperties(defaultFallback = "payment_Global_FallbackMethod")
+//@DefaultProperties(defaultFallback = "payment_Global_FallbackMethod")
 public class OrderHystrixController {
 
     @Resource
@@ -27,17 +27,13 @@ public class OrderHystrixController {
 //    @HystrixCommand(fallbackMethod = "paymentInfo_ErrorFallbackMethod",commandProperties = {
 //            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
 //    })
-    @HystrixCommand
+//    @HystrixCommand
     public String paymentInfo_Error(@PathVariable("id") Integer id){
         return paymentHystrixService.paymentInfo_Error(id);
     }
 
-    public String paymentInfo_ErrorFallbackMethod(@PathVariable("id") Integer id){
-        return "不好意思，服务调用中发生了错误或超时,id：" + id;
-    }
-
-    public String payment_Global_FallbackMethod(){
-        return "不好意思，服务调用中发生了错误或超时,id：" ;
-    }
+//    public String payment_Global_FallbackMethod(){
+//        return "不好意思，服务调用中发生了错误或超时,id：" ;
+//    }
 
 }

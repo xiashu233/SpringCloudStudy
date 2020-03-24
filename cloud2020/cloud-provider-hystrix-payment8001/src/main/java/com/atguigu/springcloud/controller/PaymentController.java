@@ -27,4 +27,10 @@ public class PaymentController {
     public String paymentInfo_Error(@PathVariable("id") Integer id){
         return paymentService.paymentInfo_Error(id);
     }
+
+    @GetMapping("/payment/hystrix/circuit/{id}")
+    public String circuit(@PathVariable("id") Integer id){
+        return paymentService.paymentCircuitBreaker(id);
+    }
+
 }

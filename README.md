@@ -1,7 +1,3 @@
 # SpringCloud的学习日志
-## 父项目的创建 以及提供jar包管理
-#### dependencyManagement
-#### 子模块继承后,提供作用:锁定版本+子module不用groupId和version-
-#### 并不在本项目中引入这么多jar，而是提供一种规范和默认约定。防止版本冲突等问题。
-#### 往后需要修改版本的时候只需要在父项目中修改版本号，对应的所有子项目都会重新声明 version
-#### 子项目中如果需要单独引入某个版本号只需要独立声明 version即可。如果不声明则默认使用父项目的版本号
+## 文档：SpringCloud遇到的问题总结.md
+### 链接：http://note.youdao.com/noteshare?id=c5577509615d390eee9d130a340330eb&sub=D09F21A40BC6468183D8462963FA0842

@@ -24,6 +24,8 @@
       <module>cloud-provider-hystrix-payment8001</module>
       <module>cloud-consumer-hystrix-order8000</module>
       <module>cloud-consumer-feign-hystrix-order8000</module>
+      <module>cloud-consumer-hystrix-dashboar9001</module>
+      <module>cloud-geteway-geteway9527</module>
   </modules>
 
   <!--统一管理jar包版本-->
