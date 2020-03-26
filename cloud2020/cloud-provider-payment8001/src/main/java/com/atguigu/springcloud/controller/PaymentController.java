@@ -29,7 +29,6 @@ public class PaymentController {
     private DiscoveryClient discoveryClient;
 
     @PostMapping(value = "/payment/insert")
-    @ResponseBody
     public CommonResult Insert(@RequestBody Payment payment){
         Integer result = paymentService.Add(payment);
         log.info("****插入结果：" + result);
@@ -49,7 +48,6 @@ public class PaymentController {
         return new CommonResult(444,"查询数据库失败,ServerPort:" + serverPort);
     }
 
-    @ResponseBody
     @GetMapping(value = "/payment/discovery")
     public Object discovery(){
         // 获得所有的微服务名称
@@ -75,6 +73,13 @@ public class PaymentController {
         }
         return serverPort;
     }
+
+    @GetMapping(value = "/payment/lb")
+    public String paymentGetaway(){
+
+        return "Getaway，Port：" + serverPort;
+    }
+
 
 
 }
