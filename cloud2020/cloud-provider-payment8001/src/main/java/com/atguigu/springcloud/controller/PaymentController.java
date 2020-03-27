@@ -80,6 +80,12 @@ public class PaymentController {
         return "Getaway，Port：" + serverPort;
     }
 
+    @GetMapping(value = "/payment/zipkin")
+    public String paymentZipkin(){
+
+        return "调用了服务链路，zipkin进行跟踪";
+    }
+
 
 
 }
